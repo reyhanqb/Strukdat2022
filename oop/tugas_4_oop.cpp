@@ -1,6 +1,5 @@
-// Adjacency Matrix representation in C++
-
 #include <iostream>
+
 using namespace std;
 
 class Graph {
@@ -9,7 +8,6 @@ class Graph {
   int numVertices;
 
    public:
-  // Initialize the matrix to zero
   Graph(int numVertices) {
     this->numVertices = numVertices;
     adjMatrix = new bool*[numVertices];
