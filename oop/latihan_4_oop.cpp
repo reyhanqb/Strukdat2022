@@ -35,17 +35,16 @@ class Graph {
             len = _len;
         }
 
-        AddEdgetoVertex(int u, int v){
+        void AddEdgetoVertex(int u, int v){
             vertex[u].addEdge(u,v);
             vertex[v].addEdge(v,u);
         }
 
-        showAllVertex(){
+        void showAllVertex(){
             for (int i = 0; i < len; i++)
             {
                 vertex[i].showList();
             }
-            
         }
 };
 
@@ -60,6 +59,7 @@ int main(){
     graph1.AddEdgetoVertex( 1, 4);
     graph1.AddEdgetoVertex( 2, 3);
     graph1.AddEdgetoVertex( 3, 4);
-
-    graph1.showAllVertex();
+ 
+    graph1.showAllVertex();   
+    
 }
