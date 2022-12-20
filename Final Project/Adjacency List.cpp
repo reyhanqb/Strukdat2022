@@ -122,66 +122,6 @@ class Graph {
                 }
             }
         }
-
-        int minDist(vector<int> dist, vector<bool> vis){
-            int min = INT_MAX;
-            int min_index = INT_MAX;
-            for (int i = 1; i <= v; i++)
-            {
-                if(!vis[i] && dist[i] < min) {
-                    min = dist[i];
-                    min_index = i;
-                }
-            }
-
-            return min_index;
-        }
-
-        void dijkstra(int start, int end){
-            cout << endl << "=== Dijkstra ===" << endl;
-            vector<int> dist (v+1, INT_MAX);
-            vector<bool> vis (v+1, false);
-            vector<int> res (v+1, 0);
-
-            dist[start] = 0;
-
-            for (int itv = 1; itv <= v ; itv++)
-            {
-                int min = minDist(dist, vis);
-                vis[min] = true;
-                list<int>::iterator it;
-                for(it = adj[min].begin(); it != adj[min].end(); ++it){
-                    if (
-                        weight[make_pair(min, *it)] &&
-                        !vis[*it] && 
-                        dist[min] + weight[make_pair(min, *it)]  < dist[*it]
-                    )
-                    {
-                        dist[*it] = dist[min] + weight[make_pair(min, *it)]; 
-                        res[*it] = min;
-                    }
-                }
-            }
-
-            int i = res[end];
-            vector<int> r;
-            r.push_back(end);
-            while (true)
-            {
-                r.push_back(i);
-                if(i == start) break;
-                i = res[i];
-            }
-
-            reverse(r.begin(), r.end());
-
-            for (int i = 0; i <  r.size(); i++)
-            {
-                cout << nama[r[i]] <<"(V" <<  r[i] << ")"<< ", ";
-            }
-            cout << endl << "Weight = " << dist[end] << endl;
-        }
-
 };
 
 int main(){
